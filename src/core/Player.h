@@ -3,7 +3,7 @@
 #include "core/InputState.h"
 #include "core/Vec2.h"
 
-// 소유자: main()의 지역 변수. 해제: main() 종료 시
+// 소유자: World(값 멤버). 해제: World 소멸 시
 class Player {
 public:
     // TODO: JSON 로딩 단계에서 data/*.json으로 이동

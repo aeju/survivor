@@ -19,11 +19,15 @@ FetchContent_MakeAvailable(raylib)
 # --- game_core: raylib 의존 없음 ---
 add_library(game_core STATIC
     src/core/Player.cpp
+    src/core/World.cpp
 )
 target_include_directories(game_core PUBLIC src)
 
 # --- survivor 실행 파일 ---
-add_executable(survivor src/main.cpp)
+add_executable(survivor
+    src/main.cpp
+    src/render/Renderer.cpp
+)
 target_link_libraries(survivor PRIVATE game_core raylib)
 
 if(MSVC)
