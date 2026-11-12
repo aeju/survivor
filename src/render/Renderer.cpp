@@ -9,6 +9,7 @@ namespace {
 constexpr float kGridSpacing = 64.0f;            // 픽셀
 constexpr Color kGridColor = {220, 220, 220, 255};
 constexpr Color kAxisColor = {170, 170, 170, 255};  // 월드 원점을 지나는 선
+constexpr Color kEnemyColor = DARKBLUE;
 
 // 카메라에 보이는 월드 영역에만 격자선을 그림
 void drawGrid(const Camera2D& camera, int screenW, int screenH) {
@@ -46,6 +47,11 @@ void Renderer::draw(const World& world) const {
 
     BeginMode2D(camera);
     drawGrid(camera, screenW_, screenH_);
+    // 적을 먼저 그려 플레이어가 위에 보이게 함
+    for (const Enemy& e : world.enemies()) {
+        const Vec2 ep = e.pos();
+        DrawCircleV({ep.x, ep.y}, Enemy::kRadius, kEnemyColor);
+    }
     DrawCircleV({p.x, p.y}, Player::kRadius, MAROON);
     EndMode2D();
 

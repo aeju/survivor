@@ -19,6 +19,7 @@ FetchContent_MakeAvailable(raylib)
 # --- game_core: raylib 의존 없음 ---
 add_library(game_core STATIC
     src/core/Player.cpp
+    src/core/Enemy.cpp
     src/core/World.cpp
 )
 target_include_directories(game_core PUBLIC src)
